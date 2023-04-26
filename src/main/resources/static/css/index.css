@@ -1,4 +1,66 @@
 a {
     text-decoration: none;
-    color: brown;
+    color: brown;}
+
+ body {
+     font-family: Arial;
+ }
+.header {
+    height: 100px;
+    width: 100%;
+    background-color: cadetblue;
+    display: inline-flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px;
 }
+ul {
+    display:inline-flex;
+    list-style-type: none;
+    color: #FFFFFFFF;
+}
+
+
+li::marker {display:none;}
+
+
+li {
+    padding: 15px;
+    margin-top: 15px;
+}
+label {
+    margin: 5px 0;
+    padding: 5px 0;
+}
+.telo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.avtorozatsiya {
+    display: flex;
+    flex-direction: column;
+    row-gap: 5px;
+
+
+}
+form {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+
+}
+
+input {
+    margin: 7px 0;
+    padding: 5px;
+}
+
+a {
+    margin-top: 10px;
+}
+
+
+
+
+

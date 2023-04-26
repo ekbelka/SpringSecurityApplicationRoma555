@@ -3,8 +3,105 @@
 <head>
     <meta charset="UTF-8">
     <title>Добавление товара</title>
+    <style>
+        body {
+            font-family: Arial;
+        }
+        .header {
+            height: 100px;
+            width: 100%;
+            background-color: cadetblue;
+            display: inline-flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px;
+        }
+        ul {
+            display:inline-flex;
+            list-style-type: none;
+            color: #FFFFFFFF;
+        }
+
+
+        li::marker {display:none;}
+
+
+        li {
+            padding: 15px;
+            margin-top: 15px;
+        }
+        label {
+            margin: 5px 0;
+            padding: 5px 0;
+        }
+        .telo {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .avtorozatsiya {
+            display: flex;
+            flex-direction: column;
+            row-gap: 5px;
+
+
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+
+        }
+
+        input {
+            margin: 7px 0;
+            padding: 5px;
+        }
+
+        a {
+            margin-top: 10px;
+        }
+        .wrapper {
+            display: flex;
+            justify-content: center;
+        }
+        .product {
+            width: 30%;
+            height: 400px;
+            margin-left: auto;
+            margin-right: auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            /* align-content: center; */
+            justify-content: center;
+        }
+        .menu{
+            margin-top: 10px;
+            font-size: 22px;
+            color: white;
+            text-decoration: none;
+
+        }
+    </style>
 </head>
 <body>
+<header class="header">
+    <div>
+        <img src="/img/logo-dark.png" width="200px"></div>
+    <nav class="menu">
+        <ul>
+            <li><a  class="menu" href="/"> Главная</a></li>
+            <li><a  class="menu" href="/process_login"> Личный кабинет</a></li>
+            <li><a  class="menu" href="/">Каталог</a></li>
+            <li><form   class="menu" method="post" th:action="@{/logout}">
+                <button   class="menu" type="submit">Выйти из ЛК</button>
+            </form></li>
+        </ul>
+    </nav>
+
+
+</header>
 <h3>Добавление товара</h3>
 <form th:method="POST" th:action="@{/admin/product/add}" th:object="${product}" enctype="multipart/form-data">
     <label for="title">Введите наименование товара: </label>

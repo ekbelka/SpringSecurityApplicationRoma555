@@ -3,18 +3,122 @@
 <head>
     <meta charset="UTF-8">
     <title>Главная страница</title>
+    <style>
+        body {
+            font-family: Arial;
+        }
+        .header {
+            height: 100px;
+            width: 100%;
+            background-color: cadetblue;
+            display: inline-flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px;
+        }
+        ul {
+            display:inline-flex;
+            list-style-type: none;
+            color: #FFFFFFFF;
+        }
+
+
+        li::marker {display:none;}
+
+
+        li {
+            padding: 15px;
+            margin-top: 15px;
+        }
+        label {
+            margin: 5px 0;
+            padding: 5px 0;
+        }
+        .telo {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .avtorozatsiya {
+            display: flex;
+            flex-direction: column;
+            row-gap: 5px;
+
+
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+
+        }
+
+        input {
+            margin: 7px 0;
+            padding: 5px;
+        }
+
+        a {
+            margin-top: 10px;
+        }
+        .wrapper {
+            display: flex;
+            justify-content: center;
+        }
+        .product {
+            width: 30%;
+            height: 400px;
+            margin-left: auto;
+            margin-right: auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            /* align-content: center; */
+            justify-content: center;
+        }
+        .menu{
+            margin-top: 10px;
+            font-size: 22px;
+            color: white;
+            text-decoration: none;
+
+        }
+
+
+    </style>
 </head>
 <body>
-<form method="post" th:action="@{/logout}">
+<header class="header">
+    <div>
+        <img src="/img/logo-dark.png" width="200px"></div>
+    <nav class="menu">
+        <ul>
+            <li><a  class="menu" href="/"> Главная</a></li>
+            <li><a href="/person account"> Личный кабинет</a></li>
+
+            <!--<li><a  class="menu" href="/person account">Каталог</a></li>-->
+            <li><a  class="menu" href="/cart">Корзина</a></li>
+            <li><form  class="menu" class="btn" method="get" th:action="@{/orders}">
+                <input type="submit" value="Заказы">
+            </form></li>
+            <li><form  class="menu" class="btn" method="post" th:action="@{/logout}">
+                <input  class="menu" class="btn" type="submit" value="Выйти из ЛК"></input>
+            </form></li>
+        </ul>
+    </nav>
+
+
+</header>
+<!--<form method="post" th:action="@{/logout}">
     <button type="submit">Выйти из личного кабинета</button>
 </form>
-<br>
-<form method="get" th:action="@{/cart}">
+<br>-->
+<!--<form method="get" th:action="@{/cart}">
     <button type="submit">Корзина</button>
 </form>
-<br>
-<form method="get" th:action="@{/orders}">
-    <input type="submit" value="Заказы">
+<br>-->
+<!--<form method="get" th:action="@{/orders}">
+    <input type="submit" value="Заказы">-->
 </form>
 <h1>Личный кабинет</h1>
 <h3>Cортировка, поиск, фильтрация</h3>
@@ -51,7 +155,8 @@
     </fieldset>
 </form>
 <hr>
-<h3>Результат поиска, cортировки, фильтрации</h3>
+<h2>Результат поиска, cортировки, фильтрации</h2>
+<div class="wrapper">
 <div th:each="product : ${search_product}">
     <img th:src="'/img/' + ${product.imageList[0].getFileName()}" width="300px">
     <br>
@@ -61,13 +166,14 @@
 </div>
 <hr>
 <h3>Доступные товары: </h3>
-<div th:each="product : ${products}">
+<div class="product" th:each="product : ${products}">
     <img th:src="'/img/' + ${product.imageList[0].getFileName()}" width="300px">
     <br>
     <a th:href="@{/product/info/{id}(id=${product.getId()})}" th:text="${product.getTitle()}"></a>
     <p th:text="'Цена: ' + ${product.getPrice()}"></p>
     <a th:href="@{/cart/add/{id}(id=${product.getId()})}">Добавить товар в корзину</a>
     <hr>
+</div>
 </div>
 </body>
 </html>
